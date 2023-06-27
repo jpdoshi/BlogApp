@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+	<div class="col-12 col-lg-9" style="overflow: auto;">
+		<h1 class="mb-4">{{ blog.title }}</h1>
+		<img class="rounded-4 mb-4" style="max-width: 100%;" src="{{ blog.cover.url }}">
+		<p class="pe-4">{{ blog.body|linebreaksbr }}</p>
+	</div>
+	<div class="col-12 col-lg-3">
+		<div class="bg-light p-4 rounded-4">
+			<h4 class="mb-2">Author</h4>
+			<h3 class="mb-5" style="color: #cddc39;">{{ blog.user.fname }} {{ blog.user.lname }}</h3>
+			<h4 class="mb-2">About</h4>
+			<p>{{ blog.user.about|linebreaksbr }}</p>
+		</div>
+	</div>
+</div>
+{% endblock %}

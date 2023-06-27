@@ -5,6 +5,7 @@ class User(models.Model):
 	fname = models.CharField(max_length=20)
 	lname = models.CharField(max_length=20)
 	email = models.EmailField()
+	about = models.TextField()
 	password = models.CharField(max_length=16)
 
 	def get_user_by_id(_id):
@@ -19,14 +20,15 @@ class Blog(models.Model):
 	user  = models.ForeignKey(User, on_delete=models.CASCADE)
 	cover = models.ImageField(upload_to="uploads/")
 	title = models.CharField(max_length=50)
+	pub_date = models.DateField(auto_now=True)
 	body  = models.TextField()
 
 	def get_blog_by_id(_id):
 		blog = Blog.objects.get(id=_id)
 		return blog
 
-	def get_all_blogs():
-		return Blog.objects.all()
+	def get_latest_blogs():
+		return Blog.objects.order_by('-pub_date')[:12]
 
 	def __str__(self):
 		return f"{self.title} - {self.user}"

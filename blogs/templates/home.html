@@ -2,22 +2,16 @@
 {% load static %}
 
 {% block content %}
-<nav class="navbar navbar-expand-lg navbar-light">
-  <div class="container">
-  <a class="navbar-brand" href="#"><img src="{% static 'logo.png' %}" style="height: 48px;"></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="ms-auto navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Login</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Create</a>
-      </li>
-    </ul>
+<div class="d-flex align-items-center justify-content-center">
+  <div class="row flex-lg-row-reverse align-items-center g-5 py-4">
+    <div class="col-10 col-sm-8 col-lg-6">
+      <img src="{% static 'hero.png' %}" class="d-block mx-lg-auto img-fluid" loading="lazy">
+    </div>
+    <div class="col-lg-6">
+      <h1 class="display-5 fw-bold lh-1 mb-3">Share what's in your mind</h1>
+      <p class="lead text-secondary">Here you can share your thoughts, experiences, and opinions on a variety of topics. It can be a great way to connect with other people who share your interests.</p>
+      <a href="/blogs" class="btn btn-lg px-4 rounded-pill" style="background-color: #cddc39;">Explore</a>
+    </div>
   </div>
-  </div>
-</nav>
+</div>
 {% endblock %}
