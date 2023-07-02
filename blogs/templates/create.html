@@ -1,15 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<style>
+input, textarea {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 6px;
+    width: 100%;
+}
+</style>
 <div class="bg-white rounded-4 p-4">
-<form action="/post" method="post">
+<form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    <label class="mb-2">Enter Title</label>
-    <input type="text" placeholder="Title for your blog" class="form-control mb-4" name="title" />
-    <label class="mb-2">Cover Image</label>
-    <input type="file" class="mb-4" name="cover" style="width: 100% !important" />
-    <label class="mb-2">Blog Body</label>
-    <textarea name="body" rows="12" placeholder="Body of your blog" class="form-control mb-4"></textarea>
+    {{ form.as_p }}
     <button class="btn btn-lg px-4 rounded-pill" style="background-color: #cddc39;">Create</button>
 </form>
 </div>

@@ -1,8 +1,9 @@
 from django.shortcuts import render, HttpResponse, redirect
 from .models import Blog, User
 
-# Create your views here.
+from .forms import BlogForm
 
+import os
 
 def index(request):
     if request.COOKIES.get('user') and request.COOKIES.get('user') != "":
@@ -61,19 +62,21 @@ def logout(request):
 
 
 def create(request):
-    return render(request, "create.html")
+    context = {
+        'form': BlogForm(),
+    }
+    response = render(request, "create.html", context)
+    if request.method == "POST":
+        form = BlogForm(request.POST, request.FILES)
+        if form.is_valid():
+            title = form.cleaned_data.get("title")
+            cover = form.cleaned_data.get("cover")
+            body = form.cleaned_data.get("body")
+            user = User.get_user_by_id(request.COOKIES.get('user'))
 
-
-def post(request):
-    try:
-        title = request.POST['title']
-        user = User.get_user_by_id(request.COOKIES.get('user'))
-        cover = request.POST['cover']
-        body = request.POST['body']
-
-        blog = Blog(title=title, cover=cover, user=user, body=body)
-        blog.save()
-        
-        return redirect('index')
-    except:
-        return HttpResponse("Error creating blog, try login again")
+            blog = Blog(title=title, cover=cover, body=body, user=user)
+            blog.save()
+            response = redirect("index")
+    else:
+        form = BlogForm()
+    return response
