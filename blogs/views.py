@@ -78,5 +78,8 @@ def create(request):
             blog.save()
             response = redirect("index")
     else:
-        form = BlogForm()
+        if request.COOKIES.get('user') is None:
+            response = redirect('login')
+        else:
+            form = BlogForm()
     return response
