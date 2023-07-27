@@ -83,3 +83,25 @@ def create(request):
         else:
             form = BlogForm()
     return response
+
+def create_user(request):
+    response = None
+    try:
+        fname = request.GET["fname"]
+        lname = request.GET["lname"]
+        username = request.GET["username"]
+        password = request.GET["password"]
+        email = request.GET["email"]
+        about = request.GET["about"]
+
+        user = User(fname=fname, lname=lname, username=username, password=password, email=email, about=about)
+        user.save()
+
+        response = redirect('index')
+        response.set_cookie('user', user.id)
+    except Exception as e:
+        response = HttpResponse(e)
+    return response
+
+def register(request):
+    return render(request, "register.html")

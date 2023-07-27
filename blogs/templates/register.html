@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="d-flex align-items-center justify-content-center">
+	<div class="p-4 bg-light rounded-4 shadow" style="width: 100%; max-width: 480px;">
+		<form action="/create-user" method="get">
+			<div class="mb-4">
+				<label class="mb-2">First name</label>
+				<input type="text" class="form-control" name="fname">
+			</div>
+			<div class="mb-4">
+				<label class="mb-2">Last name</label>
+				<input type="text" class="form-control" name="lname">
+			</div>
+			<div class="mb-4">
+				<label class="mb-2">Email Address</label>
+				<input type="text" class="form-control" name="email">
+			</div>
+			<div class="mb-4">
+				<label class="mb-2">Enter Username</label>
+				<input type="text" class="form-control" name="username">
+			</div>
+			<div class="mb-4">
+				<label class="mb-2">Enter Password</label>
+				<input type="password" class="form-control" name="password">
+			</div>
+			<div class="mb-4">
+				<label class="mb-2">About yourself</label>
+				<textarea class="form-control" name="about" rows="8"></textarea>
+			</div>
+			<button type="submit" class="btn my-2 px-4 w-100" style="background-color: #cddc39;">Register</button>
+		</form>
+	</div>
+</div>
+{% endblock %}
