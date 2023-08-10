@@ -3,5 +3,3 @@ Django==4.2.4
 Pillow==10.0.0
 sqlparse==0.4.4
 typing_extensions==4.7.1
-pysqlite3==0.5.1
-pysqlite3-binary==0.5.1
