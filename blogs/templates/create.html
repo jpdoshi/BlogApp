@@ -4,12 +4,13 @@
 <style>
 input, textarea {
     border: 1px solid #ddd;
+    background-color: white;
     border-radius: 8px;
     padding: 6px;
     width: 100%;
 }
 </style>
-<div class="bg-white rounded-4 p-4">
+<div class="bg-white rounded-3 p-4 bg-body-tertiary border shadow">
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}

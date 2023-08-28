@@ -6,24 +6,33 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
 	<title>Blog App</title>
 </head>
-<body style="font-family: 'Montserrat', 'Roboto', 'Verdana'; background-color: #f0f4c3;">
+<body style="font-family: 'Inter', 'Roboto', 'Verdana';">
 	<div style="min-height: 100vh;">
 		<nav class="navbar navbar-expand-lg navbar-light">
 		  <div class="container">
-		    <a class="navbar-brand" href="/"><img src="{% static 'logo.png' %}" style="height: 48px;"></a>
+		    <a class="navbar-brand" href="/"><img src="{% static 'logo.png' %}" height="52px"></a>
 		    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 		      <span class="navbar-toggler-icon"></span>
 		    </button>
 		    <div class="collapse navbar-collapse" id="navbarNav">
 		      <ul class="ms-auto navbar-nav gap-3">
+				{% if 'user' in request.COOKIES %}
+				<li class="nav-item">
+					<a href="/blogs" class="btn btn-dark rounded-pill">Explore</a>
+				</li>
+				<li class="nav-item">
+					<a href="/logout" class="btn btn-danger rounded-pill">Logout</a>
+				</li>
+				{% else %}
 		        <li class="nav-item">
-		          <a href="/login" class="nav-link">User</a>
+		          <a href="/login" class="btn">Login</a>
 		        </li>
+				{% endif %}
 		        <li class="nav-item">
-		          <a href="/create" class="nav-link rounded-pill px-3" style="background-color: #cddc39;">Create</a>
+		          <a href="/create" class="btn rounded-pill" style="background-color: #cddc39;">Create</a>
 		        </li>
 		      </ul>
 		    </div>

@@ -57,7 +57,7 @@ def login_auth(request):
 def logout(request):
     response = redirect("index")
 
-    response.set_cookie('user', "")
+    response.delete_cookie('user')
     return response
 
 
