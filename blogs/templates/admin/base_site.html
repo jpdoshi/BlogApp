@@ -1,0 +1,18 @@
+{% extends "admin/base.html" %}
+
+{% load i18n %}
+{% load static %}
+
+{% block title %}
+    Blog App
+{% endblock %}
+
+{% block extrastyle %}
+    <link rel="stylesheet" type="text/css" href="{% static "admin/admin_color.css" %}"/>
+{% endblock %}
+
+{% block branding %}
+    <a href="/admin"><img src="{% static "logo.png" %}"></a>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

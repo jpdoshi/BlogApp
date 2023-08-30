@@ -1,0 +1,109 @@
+#header {
+	height: 56px;
+	background-color: #fafafa;
+	color: black;
+	border-bottom: 1px solid #ddd;
+}
+
+#header img {
+	height: 48px;
+}
+
+p, a, button, label, input, textarea {
+	font-weight: normal !important;
+	color: black !important;
+	font-size: 15px !important;
+}
+
+a:hover, a:focus,
+button:hover, button:focus {
+	color: #424242 !important;
+}
+
+tr {
+	background-color: white !important;
+	color: #424242 !important;
+}
+
+th, td {
+	padding: 16px !important;
+	vertical-align: middle !important;
+}
+
+#recent-actions-module,
+.toggle-nav-sidebar,
+.app-auth {
+	display: none;
+}
+
+.module caption {
+	background-color: #cddc39 !important;
+}
+
+.module caption a {
+	color: white !important;
+}
+
+.current-model {
+	background-color: #f5f5f5 !important;
+}
+
+.addlink, .addlink:hover, .addlink:focus,
+.changelink, .changelink:hover, .changelink:focus,
+.submit-row input, .submit-row input:hover, .submit-row input:focus {
+	color: white !important;
+	background-color: #cddc39 !important;
+	padding: 5px 10px !important;
+	border-radius: 1.5rem !important;
+	background-image: none !important;
+}
+
+.deletelink, .deletelink:hover, .deletelink:focus {
+	color: white !important;
+}
+
+.breadcrumbs {
+	background-color: #cddc39 !important;
+	color: black !important;
+}
+
+.object-tools li a,
+.object-tools li a:focus,
+.object-tools li a:hover {
+	font-size: 12px !important;
+	background-image: none !important;
+	color: white !important;
+	border-radius: 1.5rem !important;
+	padding: 6px 12px !important;
+	background-color: #cddc39 !important;
+}
+
+#nav-filter {
+	margin-bottom: 16px;
+	height: 32px !important;
+	border: 1px solid #ddd !important;
+	background-color: white !important;
+	border-radius: 8px !important;
+}
+
+#nav-sidebar {
+	border-right: none !important;
+	padding: 16px;
+}
+
+.submit-row {
+	background-color: white !important;
+	border: none !important;
+}
+
+.vTextField,
+.vLargeTextField {
+	padding: 10px !important;
+	border-radius: 12px !important;
+	border: 1px solid #ddd !important;
+}
+
+.vTextField:focus,
+.vLargeTextField:focus {
+	outline: 1px solid #cddc39 !important;
+}
