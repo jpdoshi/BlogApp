@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class User(models.Model):
 	id    = models.AutoField(primary_key=True)
 	fname = models.CharField(max_length=20)
@@ -20,6 +21,7 @@ class User(models.Model):
 	def __str__(self):
 		return f"{self.fname} {self.lname}"
 
+
 class Blog(models.Model):
 	id    = models.AutoField(primary_key=True)
 	user  = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -27,6 +29,7 @@ class Blog(models.Model):
 	title = models.CharField(max_length=50)
 	pub_date = models.DateField(auto_now=True)
 	body  = models.TextField()
+	likes = models.IntegerField(default=0)
 
 	def get_blog_by_id(_id):
 		blog = Blog.objects.get(id=_id)

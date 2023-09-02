@@ -1,9 +1,12 @@
-from django.shortcuts import render, HttpResponse, redirect
-from .models import Blog, User
+from django.shortcuts import render, redirect
+from django.http import HttpResponse
 
+from .models import Blog, User
 from .forms import BlogForm
 
 import os
+
+# -----------------------------------------------------------------------------
 
 def index(request):
     if request.COOKIES.get('user') and request.COOKIES.get('user') != "":
@@ -16,6 +19,7 @@ def index(request):
     else:
         return render(request, "home.html")
 
+# -----------------------------------------------------------------------------
 
 def blogs(request):
     context = {
@@ -23,6 +27,7 @@ def blogs(request):
     }
     return render(request, "blogs.html", context)
 
+# -----------------------------------------------------------------------------
 
 def blog(request, id):
     context = {
@@ -30,10 +35,12 @@ def blog(request, id):
     }
     return render(request, "blog.html", context)
 
+# -----------------------------------------------------------------------------
 
 def login(request):
     return render(request, "login.html")
 
+# -----------------------------------------------------------------------------
 
 def login_auth(request):
     username = request.GET["username"]
@@ -53,6 +60,7 @@ def login_auth(request):
 
     return response
 
+# -----------------------------------------------------------------------------
 
 def logout(request):
     response = redirect("index")
@@ -60,6 +68,13 @@ def logout(request):
     response.delete_cookie('user')
     return response
 
+# -----------------------------------------------------------------------------
+
+def like(request, id):
+    response = HttpResponse(id)
+    return response
+
+# -----------------------------------------------------------------------------
 
 def create(request):
     context = {
@@ -84,6 +99,8 @@ def create(request):
             form = BlogForm()
     return response
 
+# -----------------------------------------------------------------------------
+
 def create_user(request):
     response = None
     try:
@@ -102,6 +119,8 @@ def create_user(request):
     except Exception as e:
         response = HttpResponse(e)
     return response
+
+# -----------------------------------------------------------------------------
 
 def register(request):
     return render(request, "register.html")

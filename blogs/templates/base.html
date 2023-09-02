@@ -10,50 +10,49 @@
 	<title>Blog App</title>
 </head>
 <body style="font-family: 'Inter', 'Roboto', Arial; display: flex; flex-direction: column;">
-	<div>
-		<nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom">
-		  <div class="container">
-		    <a class="navbar-brand" href="/"><img src="{% static 'logo.png' %}" height="48px"></a>
-		    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-		      <span class="navbar-toggler-icon"></span>
-		    </button>
-		    <div class="collapse navbar-collapse" id="navbarNav">
-		      <ul class="ms-auto navbar-nav gap-3">
-				{% if 'user' in request.COOKIES %}
-				<li class="nav-item">
-					<a href="/blogs" class="btn px-3 btn-dark rounded-pill">Explore</a>
-				</li>
-				<li class="nav-item">
-					<a href="/logout" class="btn px-3 btn-danger rounded-pill">Logout</a>
-				</li>
-				{% else %}
-		        <li class="nav-item">
-		          <a href="/login" class="btn px-3">Login</a>
-		        </li>
-				{% endif %}
-		        <li class="nav-item">
-		          <a href="/create" class="btn px-3 rounded-pill" style="background-color: #cddc39;">Create</a>
-		        </li>
-		      </ul>
-		    </div>
-		  </div>
-		</nav>
-		<div class="container my-5 py-4">
-			{% block content %}{% endblock %}
-		</div>
-		<div class="bg-body-tertiary border-top">
-		<footer class="container d-flex flex-wrap justify-content-between align-items-center py-3">
-		  <div class="mb-2 mb-md-0">
-		    <img src="{% static 'logo.png' %}" height="36px">
-		  </div>
-		  <ul class="nav justify-content-end">
-		    <li class="nav-item"><a href="/" class="nav-link px-2 text-muted">Home</a></li>
-		    <li class="nav-item"><a href="/login" class="nav-link px-2 text-muted">Login</a></li>
-		    <li class="nav-item"><a href="/register" class="nav-link px-2 text-muted">Register</a></li>
-		    <li class="nav-item"><a href="/blogs" class="nav-link px-2 text-muted">Explore</a></li>
-		  </ul>
-		</footer>
+	<nav class="navbar navbar-expand-lg bg-light border-bottom shadow-sm">
+	  <div class="container">
+	    <a class="navbar-brand" href="/"><img src="{% static 'logo.png' %}" height="48px"></a>
+	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	      <span class="navbar-toggler-icon"></span>
+	    </button>
+	    <div class="collapse navbar-collapse" id="navbarNav">
+	      <ul class="ms-auto navbar-nav gap-3">
+			{% if 'user' in request.COOKIES %}
+			<li class="nav-item">
+				<a href="/blogs" class="btn px-3 btn-dark rounded-pill">Explore</a>
+			</li>
+			<li class="nav-item">
+				<a href="/logout" class="btn px-3 btn-danger rounded-pill">Logout</a>
+			</li>
+			{% else %}
+	        <li class="nav-item">
+	          <a href="/login" class="btn px-3">Login</a>
+	        </li>
+			{% endif %}
+	        <li class="nav-item">
+	          <a href="/create" class="btn px-3 rounded-pill" style="background-color: #cddc39;">Create</a>
+	        </li>
+	      </ul>
+	    </div>
+	  </div>
+	</nav>
+	<div class="container my-5 py-4">
+		{% block content %}{% endblock %}
 	</div>
+	<footer class="border-top bg-light">
+	  <div class="container d-flex flex-wrap justify-content-between align-items-center py-3">
+	    <div class="mb-2 mb-md-0">
+	      <img src="{% static 'logo.png' %}" height="36px">
+	    </div>
+	    <ul class="nav justify-content-end">
+	      <li class="nav-item"><a href="/" class="nav-link px-2 text-muted">Home</a></li>
+	      <li class="nav-item"><a href="/login" class="nav-link px-2 text-muted">Login</a></li>
+	      <li class="nav-item"><a href="/register" class="nav-link px-2 text-muted">Register</a></li>
+	      <li class="nav-item"><a href="/blogs" class="nav-link px-2 text-muted">Explore</a></li>
+	    </ul>
+	  </div>
+	</footer>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -20,7 +20,8 @@
 		}
 	</style>
 	<h1 class="display-6 mb-5">Profile</h1>
-	<div class="mb-5 p-4 border rounded-3 shadow-sm">
+	<div class="mb-5 p-3 d-md-flex gap-5 border-start border-4 bg-body-tertiary" style="border-color: #cddc39 !important;">
+		<img src="{% static 'avatar.png' %}" height="200px" width="200px">
 		<table>
 			<tr>
 				<td class="point">Username</td>
@@ -45,11 +46,11 @@
 		</table>
 	</div>
 	<h1 class="display-6 mb-5">Your Blogs</h1>
-	<div class="row mb-5 g-3 align-items-center">
+	<div class="row mb-5 g-4 align-items-center">
 	{% for blog in blogs %}
 	<div class="col-6 col-md-4 col-lg-3">
 		<div class="card border-0">
-		  <img class="card-img" src="{{ blog.cover.url }}">
+		  <img class="card-img rounded-4" src="{{ blog.cover.url }}">
 		  <div class="card-body p-2">
 		    <p class="card-text text-center" style="font-size: small;">{{ blog.title }}</p>
 		    <a href="{% url 'blog' id=blog.id %}" class="stretched-link"></a>

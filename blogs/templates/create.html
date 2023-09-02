@@ -2,15 +2,23 @@
 
 {% block content %}
 <style>
+label {
+    margin-bottom: 8px;
+    font-size: large;
+}
+
 input, textarea {
     border: 1px solid #ddd;
     background-color: white;
     border-radius: 8px;
+    margin-bottom: 1rem;
     padding: 6px;
     width: 100%;
 }
 </style>
-<div class="bg-white rounded-3 p-4 bg-body-tertiary border shadow">
+
+<h1 class="display-5 mb-5">Write New Blog</h1>
+<div class="p-4 bg-body-tertiary border-start border-4" style="border-color: #cddc39 !important;">
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}

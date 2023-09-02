@@ -2,20 +2,21 @@
 
 {% block content %}
 <div class="row g-4">
-	<h1 class="display-5 mb-4">
+	<h1 class="display-5">
 		{{ blog.title }} <span class="text-muted">~{{ blog.user.fname }} {{ blog.user.lname }}</span>
 	</h1>
 	<div class="col-12 col-lg-9" style="overflow: auto;">
-		<img class="rounded-3 mb-5" style="max-width: 100%;" src="{{ blog.cover.url }}">
-		<p class="text-muted">{{ blog.body|linebreaksbr }}</p>
+		<img class="rounded-4 mb-5" style="max-width: 100%;" src="{{ blog.cover.url }}">
+		<p class="text-muted mb-5">{{ blog.body|linebreaksbr }}</p>
+		<a class="btn btn-lg rounded-pill" href="{% url 'like' id=blog.id %}" style="background-color: #cddc39;">Likes: {{blog.likes}}</a>
 	</div>
 	<div class="col-12 col-lg-3">
-		<div class="rounded-3 p-3 border shadow-sm">
-			<h3 class="mb-2">Author</h3>
-			<h2 class="mb-4" style="color: #cddc39;">{{ blog.user.fname }} {{ blog.user.lname }}</h2>
-			<h3 class="mb-2">About</h3>
+		<div class="border-start border-4 p-3 bg-body-tertiary" style="border-color: #cddc39 !important;">
+			<p class="lead mb-2">Author</p>
+			<h3 class="mb-4" style="color: #cddc39;">{{ blog.user.fname }} {{ blog.user.lname }}</h3>
+			<p class="lead mb-2">About</p>
 			<p class="mb-4 text-muted">{{ blog.user.about|linebreaksbr }}</p>
-			<h3 class="mb-2">Email</h3>
+			<p class="lead mb-2">Email</p>
 			<p class=" text-muted">{{ blog.user.email }}</p>
 		</div>
 	</div>

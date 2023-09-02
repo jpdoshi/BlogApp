@@ -3,7 +3,7 @@
 
 {% block content %}
 <div class="d-flex align-items-center justify-content-center">
-	<div class="p-4 rounded-3 bg-body-tertiary border shadow" style="width: 100%; max-width: 480px;">
+	<div class="p-4 bg-body-tertiary border-start border-4" style="width: 100%; max-width: 480px; border-color: #cddc39 !important;">
 		<form action="/login-auth" method="get">
 			<img class="mx-auto d-block mb-5" src="{% static 'logo.png' %}">
 			<div class="mb-4">
@@ -15,7 +15,7 @@
 				<input type="password" class="form-control" name="password">
 				Don't have an account? <a href="/register">Register Now!</a>
 			</div>
-			<button type="submit" class="btn my-2 px-4 w-100" style="background-color: #cddc39;">Login</button>
+			<button type="submit" class="btn my-2 px-4 w-100 rounded-pill" style="background-color: #cddc39;">Login</button>
 		</form>
 	</div>
 </div>
