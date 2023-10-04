@@ -72,6 +72,9 @@ def logout(request):
 
 def like(request, id):
     response = HttpResponse(id)
+    blog = Blog.get_blog_by_id(id)
+    blog.likes = blog.likes + 1
+    blog.save()
     return response
 
 # -----------------------------------------------------------------------------
