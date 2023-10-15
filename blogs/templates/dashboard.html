@@ -47,6 +47,7 @@
 	</div>
 	<h1 class="display-6 mb-5">Your Blogs</h1>
 	<div class="row mb-5 g-4 align-items-center">
+	{% if blogs %}
 	{% for blog in blogs %}
 	<div class="col-6 col-md-4 col-lg-3">
 		<div class="card border-0">
@@ -58,6 +59,28 @@
 		</div>
 	</div>
 	{% endfor %}
+	{% else %}
+	<p class="text-muted">No Blogs Written Yet...</p>
+	{% endif %}
+	</div>
+
+	<h1 class="display-6 mb-5">Liked Blogs</h1>
+	<div class="row mb-5 g-4 align-items-center">
+	{% if liked_blogs %}
+	{% for blog in liked_blogs %}
+	<div class="col-6 col-md-4 col-lg-3">
+		<div class="card border-0">
+		  <img class="card-img rounded-4" src="{{ blog.cover.url }}">
+		  <div class="card-body p-2">
+		    <p class="card-text text-center" style="font-size: small;">{{ blog.title }}</p>
+		    <a href="{% url 'blog' id=blog.id %}" class="stretched-link"></a>
+		  </div>
+		</div>
+	</div>
+	{% endfor %}
+	{% else %}
+	<p class="text-muted">No Blogs Liked Yet...</p>
+	{% endif %}
 	</div>
 </div>
 {% endblock %}

@@ -14,6 +14,7 @@ def index(request):
         context = {
             'user': User.get_user_by_id(request.COOKIES['user']),
             'blogs': Blog.get_blogs_by_user(user),
+            'liked_blogs': User.get_liked_blogs(user.liked_blogs),
         }
         return render(request, "dashboard.html", context)
     else:
@@ -71,10 +72,33 @@ def logout(request):
 # -----------------------------------------------------------------------------
 
 def like(request, id):
-    response = HttpResponse(id)
-    blog = Blog.get_blog_by_id(id)
-    blog.likes = blog.likes + 1
-    blog.save()
+    if request.COOKIES.get('user') and request.COOKIES.get('user') != "":
+        user = User.get_user_by_id(request.COOKIES['user'])
+        blog = Blog.get_blog_by_id(id)
+        liked_blogs = user.liked_blogs.split(',')
+        liked = bool()
+
+        for b in liked_blogs:
+            if str(blog.id) == b:
+                liked = True
+                break
+
+        if liked == False:
+            blog.likes = blog.likes + 1
+            liked_blogs.append(str(id))
+        else:
+            blog.likes = blog.likes - 1
+            liked_blogs.remove(str(id))
+
+        user.liked_blogs = ','.join(liked_blogs)
+        blog.save()
+        user.save()
+
+        response = redirect("blog", id=id)
+
+    else:
+        response = redirect("login")
+
     return response
 
 # -----------------------------------------------------------------------------

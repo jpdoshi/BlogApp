@@ -9,10 +9,21 @@ class User(models.Model):
 	email = models.EmailField()
 	about = models.TextField()
 	password = models.CharField(max_length=16)
+	liked_blogs = models.CharField(max_length=100)
 
 	def get_user_by_id(_id):
 		user = User.objects.get(id=_id)
 		return user
+
+	def get_liked_blogs(_liked_blogs):
+		if _liked_blogs != "":
+			if _liked_blogs[0] == ',':
+				_liked_blogs = _liked_blogs[1:]
+			lb = _liked_blogs.split(',')
+			blogs = Blog.objects.filter(id__in=lb).order_by('title')
+			return blogs
+		else:
+			return None
 
 	def get_user_by_username(_username):
 		user = User.objects.get(username=_username)
